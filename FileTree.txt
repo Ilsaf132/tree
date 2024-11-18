@@ -1,0 +1,135 @@
+{
+	"Russian"
+	{
+		"Russian Rock"
+		{
+			"80-90s"
+			{
+				"Famous russian group"
+				{
+					"Kino"
+				}
+				{
+					"Alexandef Bashlachev"
+				}
+			}
+			{
+				"21 century"
+				{
+					"Ufa"
+					{
+						"Male"
+						{
+							"DDT"
+						}
+						{
+							"Zemfira"
+						}
+					}
+					{
+						"Alternative"
+						{
+							"Daite tank(!)"
+						}
+						{
+							"Gorod 312"
+						}
+					}
+				}
+				{
+					"Mashina Vremeni"
+				}
+			}
+		}
+		{
+			"Russian Pop/Rap"
+			{
+				"From Ufa"
+				{
+					"Lives in Dubai"
+					{
+						"Morgenshtern"
+					}
+					{
+						"Face"
+					}
+				}
+				{
+					"Saluki"
+				}
+			}
+			{
+				"Russian Classical"
+				{
+					"Chaikovskii"
+				}
+				{
+					"Ciao"
+				}
+			}
+		}
+	}
+	{
+		"English Rock"
+		{
+			"60-70s"
+			{
+				"Psychodelic"
+				{
+					"Pink Floyd"
+				}
+				{
+					"Animals in name"
+					{
+						"Pop"
+						{
+							"The beatles"
+						}
+						{
+							"The Turtles"
+						}
+					}
+					{
+						"Led Zeppelin"
+					}
+				}
+			}
+			{
+				"Grange"
+				{
+					"Dead in 27"
+					{
+						"Nirvana"
+					}
+					{
+						"Alice in chains"
+					}
+				}
+				{
+					"Blondie"
+				}
+			}
+		}
+		{
+			"Rap"
+			{
+				"New school"
+				{
+					"Lil peep"
+				}
+				{
+					"Alive raper"
+					{
+						"Eminem"
+					}
+					{
+						"The Notorious B.I.G."
+					}
+				}
+			}
+			{
+				"Ariana Grande"
+			}
+		}
+	}
+}
