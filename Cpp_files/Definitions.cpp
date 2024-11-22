@@ -15,19 +15,19 @@ void NewElemDefinition(struct Node* parent) {
     struct Node* node_right = parent -> right;
     struct Node* node_left = parent -> left;
     int new_len_def = strlen(parent -> definition); 
+    const size_t not_strlen = strlen(" NOT ");
 
     memcpy(node_right -> definition, parent -> definition, new_len_def);
     memcpy(node_left -> definition, parent -> definition, new_len_def);
 
-    // TODO Remove magic constants
     memcpy(node_right -> definition + new_len_def, " ", 1);
-    memcpy(node_left -> definition + new_len_def, " NOT ", strlen(" NOT "));
+    memcpy(node_left -> definition + new_len_def, " NOT ", not_strlen);
 
     memcpy(node_right -> definition + new_len_def + 1, parent -> data, strlen(parent -> data));
-    memcpy(node_left -> definition + new_len_def + 5, parent -> data, strlen(parent -> data));
+    memcpy(node_left -> definition + new_len_def + not_strlen, parent -> data, strlen(parent -> data));
 
     int final_len_r = new_len_def + 1 + strlen(parent -> data);
-    int final_len_l = new_len_def + 5 + strlen(parent -> data);
+    int final_len_l = new_len_def + not_strlen + strlen(parent -> data);
 
     memcpy(node_right -> definition + final_len_r, "\0", 1);
     memcpy(node_left -> definition + final_len_l, "\0", 1);
@@ -74,10 +74,12 @@ void CompareDef(struct Tree* tree) {
     char word2[LenQuality] = {};
 
     printf("Enter first word:\n");
-    gets(word1);
+    scanf(" %s", word1);
+    // gets(word1);
 
     printf("Enter second word:\n");
-    gets(word2);
+    scanf(" %s", word2);
+    // gets(word2);
 
     char* def1 = FindDef(word1, tree -> root);
     char* def2 = FindDef(word2, tree -> root);

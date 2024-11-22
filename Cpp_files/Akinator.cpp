@@ -49,18 +49,15 @@ Errors_tree AkinatorProgramm(struct Tree* tree) {
 }
 
 void AkinatorMain(const char* dump_html_name, struct Tree* tree, const char* file_dump) {
-    int choose_option = 0;
-    int do_program = 1;
-    int after_def = 0;
+    char choose_option = 0;
 
     printf("\n\n\n\n\n\n\n");
 
-    while(do_program) {
+    while(true) {
 
-            printf("\n\nEnter \"g\" to dump tree, enter \"a\" to play Akinator, enter \"d\" to compare definitions, enter \"e\" to end\n");
+        printf("\n\nEnter \"g\" to dump tree, enter \"a\" to play Akinator, enter \"d\" to compare definitions, enter \"e\" to end\n");
 
-        scanf(" %c", &choose_option);
-        if(choose_option == EOF) {
+        if(!scanf(" %c", &choose_option)) {
             return;
         }
 
@@ -79,15 +76,13 @@ void AkinatorMain(const char* dump_html_name, struct Tree* tree, const char* fil
 
             } case 'd': {
 
-                choose_option = getchar();
+                // choose_option = getchar();
                 CompareDef(tree);
-                after_def = 1;
                 break;
 
             } case 'e': {
                 
-                do_program = 0;
-                break;
+                return;
 
             } case '\n': {
 
@@ -99,11 +94,6 @@ void AkinatorMain(const char* dump_html_name, struct Tree* tree, const char* fil
 
             }
         }
-        if(!after_def) {
-            scanf(" %c", &choose_option);
-        }
-        after_def = 0;
-        
     }
 }
 
@@ -120,7 +110,7 @@ void Guessed_answer(struct Node* parent, int answer) {
         strcpy((parent -> left) -> data, parent -> data);
         gets((parent -> right) -> data);
         
-        printf("What %s has and %s hasn`t?\n", parent -> data, (parent -> right) -> data);
+        printf("What %s hasn't and %s has?\n", parent -> data, (parent -> right) -> data);
         gets(parent -> data);
 
         NewElemDefinition(parent);

@@ -132,7 +132,13 @@
 				{
 					"Alive raper"
 					{
-						"Eminem"
+						"Black"
+						{
+							"Dr.Dre"
+						}
+						{
+							"Eminem"
+						}
 					}
 					{
 						"The Notorious B.I.G."
