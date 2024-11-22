@@ -14,7 +14,15 @@ struct Node {
     struct Node* left;
     struct Node* right;
     tree_elem_t data;
-    char definition[len_def];
+    char definition[LenDef];
 };
+
+struct Node* CreateRoot(char* quality);
+Errors_tree CreateTree(struct Tree* tree, const char* file_tree);
+struct Node* FullingTreeStart(struct Node* node, FILE* fp); 
+Errors_tree CreateFileTree(struct Tree* tree, const char* file_tree);
+void FileFulling(struct Node* node, FILE* fp, int tab);
+void Dtor(struct Node* node);
+struct Node* CreateNode();
 
 #endif

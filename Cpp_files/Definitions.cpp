@@ -5,39 +5,73 @@
 #include "Tree.h"
 
 void MakeDefinition(struct Tree* tree) {
-    strcpy((tree -> root) -> definition, "Def is: ");
+    strcpy((tree -> root) -> definition, " ");
 
-    RecursionDef(tree -> root -> right, tree -> root);
-    RecursionDef(tree -> root -> left, tree -> root);
+    RecursionDef(tree -> root -> right, tree -> root, 0);
+    RecursionDef(tree -> root -> left, tree -> root, 0);
 }
 
-void RecursionDef(struct Node* node, struct Node* parent) {
+void NewElemDefinition(struct Node* parent) {
+    struct Node* node_right = parent -> right;
+    struct Node* node_left = parent -> left;
+    int new_len_def = strlen(parent -> definition); 
+
+    memcpy(node_right -> definition, parent -> definition, new_len_def);
+    memcpy(node_left -> definition, parent -> definition, new_len_def);
+
+    // TODO Remove magic constants
+    memcpy(node_right -> definition + new_len_def, " ", 1);
+    memcpy(node_left -> definition + new_len_def, " NOT ", strlen(" NOT "));
+
+    memcpy(node_right -> definition + new_len_def + 1, parent -> data, strlen(parent -> data));
+    memcpy(node_left -> definition + new_len_def + 5, parent -> data, strlen(parent -> data));
+
+    int final_len_r = new_len_def + 1 + strlen(parent -> data);
+    int final_len_l = new_len_def + 5 + strlen(parent -> data);
+
+    memcpy(node_right -> definition + final_len_r, "\0", 1);
+    memcpy(node_left -> definition + final_len_l, "\0", 1);
+
+    printf("%s: %s\n", node_left -> data, node_left -> definition);
+    printf("%s: %s\n", node_right -> data, node_right -> definition);
+}
+
+void RecursionDef(struct Node* node, struct Node* parent, int root_def) {
     
     if(node) {
+        
         char* parent_def = parent -> definition;
 
         memcpy(node -> definition, parent_def, strlen(parent_def));
 
         char* new_def = node -> definition + strlen(parent_def);
-        *new_def = ' ';
+        if(root_def) {
+            *new_def = ',';
+            new_def++;
+            *new_def = ' ';
+        } else {
+            root_def++;
+            new_def--;
+        }
 
         if(parent -> left == node) {
-            memcpy(new_def + 1, "NOT ", 4);
-            new_def = new_def + 4;
+            memcpy(new_def + 1, "NOT ", strlen("NOT "));
+            new_def = new_def + strlen("NOT ");
         } 
 
         memcpy(new_def + 1, parent -> data, strlen(parent -> data));
-        *(new_def + 1 + strlen(parent -> data)) = '\0'; 
+        *(new_def + 1 + strlen(parent -> data)) = '\0';
 
         printf("%s - %s\n", node -> data, node -> definition);
-        RecursionDef(node -> right, node);
-        RecursionDef(node -> left, node);
+        
+        RecursionDef(node -> right, node, 1);
+        RecursionDef(node -> left, node, 1);
     }
 }
 
 void CompareDef(struct Tree* tree) {
-    char word1[len_quality] = {};
-    char word2[len_quality] = {};
+    char word1[LenQuality] = {};
+    char word2[LenQuality] = {};
 
     printf("Enter first word:\n");
     gets(word1);
@@ -57,38 +91,21 @@ void CompareDef(struct Tree* tree) {
 }
 
 void PrintDifference(char* def1, char* def2) {
-    char qual1[len_quality] = {};
-    char qual2[len_quality] = {};
-
-    def1 += def_is;
-    def2 += def_is;
-
-    sscanf(def1, "%s", qual1);
-    sscanf(def2, "%s", qual2);
 
     printf("Words are equal in: ");
-    while(!mystricmp(qual1, qual2)) {
+    while(*def1 == *def2 && *def1 != '\0') {
 
-        printf("%s ", qual1);
+        printf("%c", *def1);
 
-        def1 += strlen(qual1) + 1;
-        def2 += strlen(qual2) + 1;
-
-        sscanf(def1, "%s", qual1);
-        sscanf(def2, "%s", qual2);
+        def1++;
+        def2++;
 
     }
     printf("\n");
 
-    sscanf(def1, "%s", qual1);
-    sscanf(def2, "%s", qual2);
-
-    printf("Words are different in: ");
-    if(!mystricmp(qual1, "NOT")) {
-        printf("%s", qual2);
-    } else if(!mystricmp(qual2, "NOT")) {
-        printf("%s", qual1);
-    } 
+    printf("Words are different since:\n");
+    printf("%s\n", def1);
+    printf("%s\n", def2);
 
 
 }

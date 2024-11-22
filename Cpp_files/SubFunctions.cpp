@@ -34,3 +34,7 @@ const char* mystrchr(const char* str, int symb) {
     } 
     return strchr(str, symb) + 1;
 }
+
+void ClearBuffer() {
+    while(getchar() != '\n') {}
+}

@@ -8,8 +8,8 @@ flags = -IHeaders -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -W
 tree: tree.exe
 	@.\tree.exe
 
-tree.exe:TreeMain.o Akinator.o Definitions.o GraphDump.o SubFunctions.o
-	@g++ TreeMain.o Akinator.o Definitions.o GraphDump.o SubFunctions.o -o tree.exe
+tree.exe:TreeMain.o Akinator.o Definitions.o GraphDump.o SubFunctions.o Tree.o
+	@g++ TreeMain.o Akinator.o Definitions.o GraphDump.o SubFunctions.o Tree.o -o tree.exe
 
 TreeMain.o: $(PATH_CPP)\TreeMain.cpp $(HEADERS) 
 	@g++ -c $(flags) $(PATH_CPP)\TreeMain.cpp 
@@ -26,5 +26,8 @@ GraphDump.o: $(PATH_CPP)\GraphDump.cpp $(HEADERS)
 SubFunctions.o: $(PATH_CPP)\SubFunctions.cpp $(HEADERS) 
 	@g++ -c $(flags) $(PATH_CPP)\SubFunctions.cpp 
 
+Tree.o: $(PATH_CPP)\SubFunctions.cpp $(HEADERS) 
+	@g++ -c $(flags) $(PATH_CPP)\Tree.cpp
+
 clean:
-	rm -rf *.o *.exe *.exe.log *.exe.log.dmp
+	rm -rf *.o *.exe

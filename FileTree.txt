@@ -7,7 +7,13 @@
 			{
 				"Famous russian group"
 				{
-					"Kino"
+					"punk rock"
+					{
+						"Korol I Shut"
+					}
+					{
+						"Kino"
+					}
 				}
 				{
 					"Alexandef Bashlachev"
@@ -29,7 +35,13 @@
 					{
 						"Alternative"
 						{
-							"Daite tank(!)"
+							"Rap"
+							{
+								"Anacondaz"
+							}
+							{
+								"Daite tank(!)"
+							}
 						}
 						{
 							"Gorod 312"
